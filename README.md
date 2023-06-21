@@ -1,1 +1,0 @@
-# Magic The Gathering verification
