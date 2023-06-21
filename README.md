@@ -1,1 +1,1 @@
-# mtgAppPython
+# Magic The Gathering verification
