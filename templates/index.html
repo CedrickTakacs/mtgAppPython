@@ -6,34 +6,39 @@
 </head>
 <body>
     <h1>Magic Card Search</h1>
-    <form id="search-form">
-        <input type="text" id="search-query" placeholder="Enter a card name">
+    <form id="search-form" method="POST">
+        <input type="text" id="search-query" name="search_query" placeholder="Enter a card name">
         <button type="submit">Search</button>
     </form>
     <hr>
     <div id="card-container">
         {% if cards %}
             {% for card in cards %}
-                <div class="card">
-                    <h3>{{ card.name }}</h3>
-                    <img src="{{ card.image }}" alt="{{ card.name }}">
-                    <p>Type: {{ card.type }}</p>
-                    <p>Set: {{ card.set }}</p>
-                    <p>Rarity: {{ card.rarity }}</p>
-                    {% if card.usd_price %}
-                        <p>USD Price: {{ card.usd_price }}</p>
-                    {% else %}
-                        <p>USD Price: Not available</p>
-                    {% endif %}
-                </div>
+            <div class="card">
+                <h3>{{ card.name }}</h3>
+                <img src="{{ card.image }}" alt="{{ card.name }}">
+                <p>Type: {{ card.type }}</p>
+                <p>Set: {{ card.set }}</p>
+                <p>Rarity: {{ card.rarity }}</p>
+                {% if card.usd_price %}
+                    <p>USD Price: {{ card.usd_price }} $</p>
+                {% else %}
+                    <p>USD Price: Not available</p>
+                {% endif %}
+                {% if card.cad_price %}
+                    <p>CAD Price: {{ card.cad_price }} $</p>
+                {% else %}
+                    <p>CAD Price: Not available</p>
+                {% endif %}
+            </div>
             {% endfor %}
         {% else %}
             <p>No cards found.</p>
         {% endif %}
     </div>
-    <!-- <script src="{{ url_for('static', filename='script.js') }}"></script> -->
 </body>
 </html>
+
 
 
 
